@@ -10,7 +10,7 @@ class BookController extends Controller
     public function index(){
         $books = Book::all();
         if ($books){
-            return response()->json([$books]);
+            return response()->json($books);
         } else {
             return response()->json([
                 'message' => "Incapaz de pegar livros!",
