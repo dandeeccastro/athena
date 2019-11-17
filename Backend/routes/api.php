@@ -22,6 +22,7 @@ Route::post("book","BookController@store");
 Route::get("book/{id}","BookController@show");
 Route::put("book/{id}","BookController@update");
 Route::delete("book/{id}","BookController@destroy");
+Route::get("book/download/{id}","BookController@downloadBook");
 
 
 Route::get("category","CategoryController@index");

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Book;
 
 class BookController extends Controller
@@ -25,7 +26,7 @@ class BookController extends Controller
             return response()->json([$book]);
         } else {
             return response()->json([
-                'mesage' => "Livro em questão não foi encontrado!",
+                'message' => "Livro em questão não foi encontrado!",
                 'status' => 400
             ]);
         }
@@ -38,7 +39,7 @@ class BookController extends Controller
             return response()->json([$book]);;
         } else {
             return response()->json([
-                'mesage' => "Incapaz de atualizar o livro!",
+                'message' => "Incapaz de atualizar o livro!",
                 'status' => 400
             ]);
         }
@@ -62,4 +63,16 @@ class BookController extends Controller
             ]);
         }
     }
+
+		public function downloadBook($id) {
+			$book = Book::findOrFail($id);
+			if ($book){
+				return Storage::download($book->file);
+			} else {
+				return response()->json([
+					'message' => 'Erro no download de arquivo',
+					'status' => '400'
+				]);
+			}
+		}
 }

@@ -13,7 +13,7 @@ class Book extends Model
     public function insertBook(Request $req){
         $this->name = $req->name;
         $this->description = $req->description;
-        $this->file = $req->file;
+        $this->file = $req->file('file')->store('books');
 
         $category = Category::where("name",$req->category)->first();
         $this->categoryId = $category->id;
