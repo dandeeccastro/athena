@@ -17,7 +17,7 @@ class CreateExpensesTable extends Migration
 			$table->bigIncrements('id');
 			$table->double('value');
 			$table->string('name');
-			$table->date('date');
+			$table->string('date');
 			$table->bigInteger('xablauId')->unsigned()->nullable();
 			$table->bigInteger('typeId')->unsigned()->nullable();
 			$table->timestamps();

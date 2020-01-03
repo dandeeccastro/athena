@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Xablau;
 
 class Expense extends Model
 {
@@ -12,9 +13,15 @@ class Expense extends Model
 		$this->date = $req->date;
 		$this->name = $req->name;
 
-		$month = date('M',$req->date);
-		$year = date('Y',$req->date);
+		$month = date('m',strtotime($req->date));
+		$year = date('Y',strtotime($req->date));
 		$xablau = Xablau::where('year',$year)->where('month',$month)->first();
+		if(! $xablau) {
+			$xablau = new Xablau();
+			$req->month = $month;
+			$req->year = $year;
+			$xablau->insertXablau($req);
+		}
 		$this->xablauId = $xablau->id;
 
 		$type = Type::where('name',$req->type)->first();
@@ -34,8 +41,8 @@ class Expense extends Model
 			$this->typeId = $type->id;
 		}
 		if($req->xablau){
-			$month = date('M',$req->date);
-			$year = date('Y',$req->date);
+			$month = date('m',strtotime($req->date));
+			$year = date('Y',strtotime($req->date));
 			$xablau = Xablau::where('year',$year)->where('month',$month)->first();
 			$this->xablauId = $xablau->id;
 		}
