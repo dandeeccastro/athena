@@ -27,7 +27,7 @@ class Book extends Model
             $this->description = $req->description;
         if ($req->file)
             $this->file = $req->file;
-        if ($req->categoryId){
+        if ($req->category){
             $category = Category::where("name",$req->category)->first();
             $this->categoryId = $category->id;
         }

@@ -58,7 +58,7 @@ class BookController extends Controller
             return response()->json([$book]);
         } else {
             return response()->json([
-                'mesage' => "Livro é imortal!",
+                'message' => "Livro é imortal!",
                 'status' => 400
             ]);
         }
