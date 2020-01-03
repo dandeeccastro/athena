@@ -21,9 +21,7 @@ class CreateExpensesTable extends Migration
 			$table->bigInteger('xablauId')->unsigned()->nullable();
 			$table->bigInteger('typeId')->unsigned()->nullable();
 			$table->timestamps();
-		});
 
-		Schema::table('expenses',function (Blueprint $table) {
 			$table->foreign('xablauId')->references('id')->on('xablaus')->onDelete('set null');
 			$table->foreign('typeId')->references('id')->on('types')->onDelete('set null');
 		});

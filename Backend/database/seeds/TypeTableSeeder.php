@@ -32,4 +32,5 @@ class TypeTableSeeder extends Seeder
         DB::table('types')->insert([
             'name' => "Investimento",
         ]);
+		}
 }

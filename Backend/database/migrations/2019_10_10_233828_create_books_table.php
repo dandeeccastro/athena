@@ -20,9 +20,7 @@ class CreateBooksTable extends Migration
 			$table->string('file');
 			$table->bigInteger('categoryId')->unsigned()->nullable();
 			$table->timestamps();
-		});
 
-		Schema::table('books', function (Blueprint $table) {
 			$table->foreign('categoryId')->references('id')->on('categories')->onDelete('set null');
 		});
 	}
