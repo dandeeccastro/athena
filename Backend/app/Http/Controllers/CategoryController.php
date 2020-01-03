@@ -11,7 +11,10 @@ class CategoryController extends Controller
     public function index(){
         $categories = Category::all();
         if ($categories){
-            return response()->json([$categories]);
+					return response()->json([
+						'data' => $categories,
+						'status' => 200
+					]);
         } else {
             return response()->error($data,400);
         }
@@ -20,7 +23,10 @@ class CategoryController extends Controller
     public function show($id){
         $category = Category::findOrFail($id);
         if ($category){
-            return response()->json([$category]);
+            return response()->json([
+							'data' => $category,
+							'status' => 200
+						]);
         } else {
             return response()->error($data,400);
         }
@@ -30,7 +36,10 @@ class CategoryController extends Controller
         $category = new Category();
         $category->insertCategory($req);
         if ($category){
-            return response()->json([$category]);;
+            return response()->json([
+							'data' => $category,
+							'status' => 200
+						]);
         } else {
             return response()->error($data,400);
         }
@@ -39,14 +48,20 @@ class CategoryController extends Controller
     public function update(Request $req, $id){
         $category = Category::findOrFail($id);
         $category->updateCategory($req);
-        return response()->json([$category]);
+        return response()->json([
+					'data' => $category,
+					'status' => 200
+				]);
     }
 
     public function destroy($id){
         $category = Category::findOrFail($id);
         $category = Category::destroy($id);
         if ($category){
-            return response()->json([$category]);
+            return response()->json([
+							'data' => $category,
+							'status' => 200
+						]);
         } else {
             return response()->error($data,400);
         }

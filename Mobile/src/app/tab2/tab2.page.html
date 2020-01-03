@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+     	Xablau 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+	<ion-grid>
+		<ion-row *ngIf='currentXablau === null' justify-content-center>
+			<ion-col>
+				<p >Nada por aqui ʕ•ᴥ•ʔ</p>
+			</ion-col>
+		</ion-row>
+		<ion-row justify-content-center>
+			<ion-col align-self-center >
+				<ion-button>Ganho</ion-button>
+			</ion-col>
+			<ion-col align-self-center>
+				<ion-button>Gasto</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

@@ -48,3 +48,4 @@ Route::post("xablau","XablauController@store");
 Route::get("xablau/{id}","XablauController@show");
 Route::put("xablau/{id}","XablauController@update");
 Route::delete("xablau/{id}","XablauController@destroy");
+Route::get("xablau/{month}/{year}","XablauController@findByDate");

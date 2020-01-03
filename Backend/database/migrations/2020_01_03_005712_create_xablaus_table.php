@@ -17,6 +17,7 @@ class CreateXablausTable extends Migration
             $table->bigIncrements('id');
 						$table->integer('year');
 						$table->integer('month');
+						$table->double('balance');
             $table->timestamps();
         });
     }

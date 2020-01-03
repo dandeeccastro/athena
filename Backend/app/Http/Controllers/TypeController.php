@@ -11,7 +11,10 @@ class TypeController extends Controller
 	public function index(){
 		$types = Type::all();
 		if ($types){
-			return response()->json($types);
+			return response()->json(
+				'data' => $types,
+				'status' => 200
+				]);
 		} else {
 			return response()->json([
 				'message' => "Incapaz de pegar tipo de gasto!",
@@ -23,7 +26,10 @@ class TypeController extends Controller
 	public function show($id){
 		$type = Type::findOrFail($id);
 		if ($type){
-			return response()->json([$type]);
+			return response()->json([
+				'data' => $type,
+				'status' => 200
+			]);
 		} else {
 			return response()->json([
 				'message' => "Tipo de gasto em questão não foi encontrado!",
@@ -36,7 +42,10 @@ class TypeController extends Controller
 		$type = new Type();
 		$type->insertType($req);
 		if ($type){
-			return response()->json([$type]);;
+			return response()->json([
+				'data' => $type,
+				'status' => 200
+			]);
 		} else {
 			return response()->json([
 				'message' => "Incapaz de atualizar o tipo de gasto!",
@@ -48,14 +57,20 @@ class TypeController extends Controller
 	public function update(Request $req, $id){
 		$type = Type::findOrFail($id);
 		$type->updateType($req);
-		return response()->json([$type]);
+		return response()->json([
+			'data' => $type,
+			'status' => 200
+		]);
 	}
 
 	public function destroy($id){
 		$type = Type::findOrFail($id);
 		$type = Type::destroy($id);
 		if ($type){
-			return response()->json([$type]);
+			return response()->json([
+				'data' => $type,
+				'status' => 200
+			]);
 		} else {
 			return response()->json([
 				'mesage' => "Tipo é imortal!",

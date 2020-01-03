@@ -11,7 +11,10 @@ class BookController extends Controller
     public function index(){
         $books = Book::all();
         if ($books){
-            return response()->json($books);
+            return response()->json([
+                'data' => $books,
+                'status' => 200
+            ]);
         } else {
             return response()->json([
                 'message' => "Incapaz de pegar livros!",
@@ -23,7 +26,10 @@ class BookController extends Controller
     public function show($id){
         $book = Book::findOrFail($id);
         if ($book){
-            return response()->json([$book]);
+            return response()->json([
+                'data' => $book,
+                'status' => 200
+            ]);
         } else {
             return response()->json([
                 'message' => "Livro em questão não foi encontrado!",
@@ -36,7 +42,10 @@ class BookController extends Controller
         $book = new Book();
         $book->insertBook($req);
         if ($book){
-            return response()->json([$book]);;
+            return response()->json([
+                'data' => $book,
+                'status' => 200
+            ]);
         } else {
             return response()->json([
                 'message' => "Incapaz de atualizar o livro!",
@@ -48,14 +57,20 @@ class BookController extends Controller
     public function update(Request $req, $id){
         $book = Book::findOrFail($id);
         $book->updateBook($req);
-        return response()->json([$book]);
+            return response()->json([
+                'data' => $book,
+                'status' => 200
+            ]);
     }
 
     public function destroy($id){
         $book = Book::findOrFail($id);
         $book = Book::destroy($id);
         if ($book){
-            return response()->json([$book]);
+            return response()->json([
+                'data' => $book,
+                'status' => 200
+            ]);
         } else {
             return response()->json([
                 'message' => "Livro é imortal!",

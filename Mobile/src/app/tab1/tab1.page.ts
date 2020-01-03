@@ -16,7 +16,7 @@ export class Tab1Page {
 	
 	getBooks(){
 		this.book.getBooks().subscribe( (res) => {
-			this.books = res;
+			this.books = res.data;
 		} );
 	}
 }

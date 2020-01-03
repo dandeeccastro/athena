@@ -18,6 +18,7 @@ class CreateExpensesTable extends Migration
 			$table->double('value');
 			$table->string('name');
 			$table->string('date');
+			$table->boolean('isIncome');
 			$table->bigInteger('xablauId')->unsigned()->nullable();
 			$table->bigInteger('typeId')->unsigned()->nullable();
 			$table->timestamps();
